@@ -1,0 +1,2 @@
+-- TODO Hito 2 / Nicolas: registrar atención clínica completa en una transacción.
+-- TODO Hito 2 / Arturo: aplicar plan de vacunación y programar próxima dosis.

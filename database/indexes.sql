@@ -1,0 +1,2 @@
+-- TODO Hito 2: crear índices según consultas reales y EXPLAIN ANALYZE.
+-- Las PK y UNIQUE del esquema ya generan índices básicos.

@@ -1,0 +1,1 @@
+-- TODO Hito 2 / Anthony: estadísticas por sede en vista materializada y estrategia de refresh.
