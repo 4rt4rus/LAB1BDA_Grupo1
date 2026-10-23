@@ -1,9 +1,10 @@
 -- Datos de demostración. Ejecutar una vez después de schema.sql.
--- Contraseña de los tres usuarios: Lab1BD2026! (cambiar fuera de desarrollo).
+-- Contraseña de los cuatro usuarios: Lab1BD2026! (cambiar fuera de desarrollo).
 BEGIN;
 INSERT INTO roles (nombre) VALUES ('TUTOR'), ('VETERINARIO'), ('ADMINISTRADOR');
 INSERT INTO usuarios (rol_id, correo, password_hash, nombre) VALUES
   ((SELECT id FROM roles WHERE nombre = 'TUTOR'), 'ana@example.test', '$2b$12$PgiOHphSGWLOxnNtk3psaeFIqTLtAX3dojXo2aoZMOcnxeFPODwwS', 'Ana Pérez'),
+  ((SELECT id FROM roles WHERE nombre = 'TUTOR'), 'bea@example.test', '$2b$12$PgiOHphSGWLOxnNtk3psaeFIqTLtAX3dojXo2aoZMOcnxeFPODwwS', 'Bea Díaz'),
   ((SELECT id FROM roles WHERE nombre = 'VETERINARIO'), 'luis@example.test', '$2b$12$PgiOHphSGWLOxnNtk3psaeFIqTLtAX3dojXo2aoZMOcnxeFPODwwS', 'Luis Soto'),
   ((SELECT id FROM roles WHERE nombre = 'ADMINISTRADOR'), 'admin@example.test', '$2b$12$PgiOHphSGWLOxnNtk3psaeFIqTLtAX3dojXo2aoZMOcnxeFPODwwS', 'Admin Demo');
 INSERT INTO sedes (nombre, direccion, telefono) VALUES
@@ -11,10 +12,12 @@ INSERT INTO sedes (nombre, direccion, telefono) VALUES
   ('Norte', 'Calle Norte 200', '22220002');
 INSERT INTO tutores (usuario_id, telefono, direccion)
   SELECT id, '99990000', 'Calle Uno 10' FROM usuarios WHERE correo = 'ana@example.test';
+INSERT INTO tutores (usuario_id, telefono, direccion)
+  SELECT id, '99990001', 'Calle Dos 20' FROM usuarios WHERE correo = 'bea@example.test';
 INSERT INTO especies (nombre) VALUES ('Perro'), ('Gato');
 INSERT INTO mascotas (tutor_id, especie_id, nombre, fecha_nacimiento, sexo) VALUES
-  ((SELECT id FROM tutores LIMIT 1), (SELECT id FROM especies WHERE nombre = 'Perro'), 'Luna', '2021-05-10', 'H'),
-  ((SELECT id FROM tutores LIMIT 1), (SELECT id FROM especies WHERE nombre = 'Gato'), 'Milo', '2023-02-15', 'M');
+  ((SELECT t.id FROM tutores t JOIN usuarios u ON u.id = t.usuario_id WHERE u.correo = 'ana@example.test'), (SELECT id FROM especies WHERE nombre = 'Perro'), 'Luna', '2021-05-10', 'H'),
+  ((SELECT t.id FROM tutores t JOIN usuarios u ON u.id = t.usuario_id WHERE u.correo = 'bea@example.test'), (SELECT id FROM especies WHERE nombre = 'Gato'), 'Milo', '2023-02-15', 'M');
 INSERT INTO veterinarios (usuario_id, registro_profesional, especialidad)
   SELECT id, 'VET-001', 'Medicina general' FROM usuarios WHERE correo = 'luis@example.test';
 INSERT INTO veterinario_sede (veterinario_id, sede_id)
