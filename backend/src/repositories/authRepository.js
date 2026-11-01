@@ -9,3 +9,13 @@ export async function findUserByEmail(correo) {
   );
   return rows[0] ?? null;
 }
+
+export async function findUserById(id) {
+  const { rows } = await pool.query(
+    `SELECT u.id, u.nombre, u.correo, u.activo, r.nombre AS rol
+     FROM usuarios u JOIN roles r ON r.id = u.rol_id
+     WHERE u.id = $1`,
+    [id],
+  );
+  return rows[0] ?? null;
+}
