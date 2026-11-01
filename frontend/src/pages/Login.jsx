@@ -1,9 +1,9 @@
-import { useState } from 'react';
+import React, { useState } from 'react';
 import { useAuth } from '../context/AuthContext.jsx';
 
 export default function Login() {
   const { login } = useAuth();
-  const [correo, setCorreo] = useState('ana@example.test');
+  const [correo, setCorreo] = useState('admin@redvet.cl');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
   const [loading, setLoading] = useState(false);

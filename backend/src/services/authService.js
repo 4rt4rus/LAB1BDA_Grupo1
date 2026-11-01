@@ -14,7 +14,24 @@ export async function login(correo, password) {
     error.status = 401;
     throw error;
   }
-  const payload = { sub: String(user.id), rol: user.rol };
+  const payload = {
+    sub: String(user.id),
+    rol: user.rol,
+    id_tutor: user.id_tutor,
+    id_veterinario: user.id_veterinario,
+    id_sede: user.id_sede,
+  };
   const token = jwt.sign(payload, process.env.JWT_SECRET, { expiresIn: '8h' });
-  return { token, usuario: { id: user.id, nombre: user.nombre, correo: user.correo, rol: user.rol } };
+  return {
+    token,
+    usuario: {
+      id: user.id,
+      nombre: user.nombre,
+      correo: user.correo,
+      rol: user.rol,
+      id_tutor: user.id_tutor,
+      id_veterinario: user.id_veterinario,
+      id_sede: user.id_sede,
+    },
+  };
 }

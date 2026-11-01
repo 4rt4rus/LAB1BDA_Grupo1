@@ -1,2 +1,0 @@
--- TODO Hito 2 / Ignacio: impedir recetar principios activos que causen alergia.
--- TODO Hito 2 / Anthony: registrar cambios de diagnósticos en auditoria_diagnosticos.

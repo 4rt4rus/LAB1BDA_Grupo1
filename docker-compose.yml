@@ -1,0 +1,44 @@
+services:
+  postgres_db:
+    image: postgres:15-alpine
+    container_name: postgres_db
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: change_me
+      POSTGRES_DB: lab1bd_veterinaria
+    ports:
+      - "5432:5432"
+    volumes:
+      - ./database:/docker-entrypoint-initdb.d
+      - pgdata:/var/lib/postgresql/data
+
+  backend:
+    build: ./backend
+    container_name: backend
+    restart: always
+    ports:
+      - "3000:3000"
+    environment:
+      - PORT=3000
+      - DB_HOST=postgres_db
+      - DB_PORT=5432
+      - DB_NAME=lab1bd_veterinaria
+      - DB_USER=postgres
+      - DB_PASSWORD=change_me
+      - JWT_SECRET=tu_clave_secreta_muy_larga_y_segura
+      - FRONTEND_ORIGIN=http://localhost:5173
+    depends_on:
+      - postgres_db
+
+  frontend:
+    build: ./frontend
+    container_name: frontend
+    ports:
+      - "5173:5173"
+    environment:
+      - VITE_API_URL=http://localhost:3000/api
+    depends_on:
+      - backend
+
+volumes:
+  pgdata:
