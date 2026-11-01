@@ -44,9 +44,6 @@ Nota: se debe esperar hasta que aparezca el mensaje 'database system is ready to
 
 El sitio ya se encuentra arriva localmente y es posible acceder a él abriendo `http://localhost:5173` en el navegador.
 
-
-Abrir `http://localhost:5173`. Para comprobar la API: `http://localhost:3000/api/health`.
-
 El seeder incluye cuentas **solo de demostración**: `admin@redvet.cl`, `vet.norte@redvet.cl`, `carlos.m@gmail.com`, etc; contraseña `admin123`, `vet123` y `tutor123` respectivamente.
 
 Una vez finalizado el testeo de la base, los contenedores y esquemas se pueden bajar y eliminar usando los comandos en la misma ventana bash/CMD:
