@@ -12,7 +12,7 @@ REST API con Express.js de Node.js (routes → controllers → services → repo
 CRUDE y Endpoints con PostgreSQL
 ```
 
-El stack tecnológico consiste de React.js (^19.2.0) + Vite (^7.1.0)para el frontend, Node.js (20-alpine) con Express.js (^4.21.2) y PostgreSQL (16+) para la base de datos relacional.
+El stack tecnológico consiste de React.js (^19.2.0) + Vite (^7.1.0) para el frontend, Node.js (20-alpine) con Express.js (^4.21.2) para el backend y PostgreSQL (16+) para la base de datos relacional.
 Una sola aplicación y una sola base de datos. No se usa ORM. Los módulos futuros pueden añadirse con archivos propios en las carpetas de cada capa y registrar sus rutas en `backend/src/app.js`.
 
 ## Requisitos
