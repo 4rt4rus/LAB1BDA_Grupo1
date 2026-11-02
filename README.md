@@ -25,8 +25,8 @@ Solo necesitas **Docker Desktop** instalado y abierto.
 1. Descarga el proyecto y entra a la carpeta:
 
    ```bash
-   git clone https://github.com/jjmca91000/LAB1BD_2_2026.git
-   cd LAB1BD_2_2026
+   git clone https://github.com/4rt4rus/LAB1BDA_Grupo1.git
+   cd LAB1BDA_Grupo1
    ```
 
 2. Crea el archivo de configuración copiando el de ejemplo:
